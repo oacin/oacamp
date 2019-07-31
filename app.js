@@ -16,8 +16,6 @@ const commentRoutes = require("./routes/comments"),
 	  indexRoutes = require("./routes/index");
 
 //DB CONNECTION
-//Local DB: mongodb://localhost/yelp_camp
-//Cloud DB: mongodb+srv://oacin:uvaGrade31@cluster0-zs3bc.mongodb.net/test?retryWrites=true&w=majority
 mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
 	useFindAndModify: false,
