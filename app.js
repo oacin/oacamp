@@ -36,6 +36,8 @@ app.set("view engine", "ejs");
 
 //seedDB(); //SEEDING DB WITH SOME DATA
 
+app.locals.moment = require("moment");
+
 //PASSPORT CONFIG
 app.use(require("express-session")({
 	secret: "This would be great mrs Oacin",

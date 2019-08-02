@@ -16,6 +16,9 @@ router.get("/register", (req, res) => {
 //CREATING USER
 router.post("/register", (req, res) => {
 	var newUser = new User({username: req.body.username});
+	if(req.body.adminCode === "bankai"){
+		newUser.isAdmin = true;
+	}
 	User.register(newUser, req.body.password, (err, user) => {
 		if(err){
 			console.log(err);

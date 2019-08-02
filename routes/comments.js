@@ -51,13 +51,14 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, (req, res) => 
 			return res.redirect("back");
 		}
 		Comment.findById(req.params.comment_id, (err, foundComment) => {
-		res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+			res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
 		});
 	});
 });
 
 router.put("/:comment_id", middleware.checkCommentOwnership, (req, res) => {
 	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updatedComment) => {
+		req.flash("success", "Comment successfully changed!");
 		res.redirect("/campgrounds/" + req.params.id);
 	});
 });
@@ -65,7 +66,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, (req, res) => {
 //DESTROY
 router.delete("/:comment_id", middleware.checkCommentOwnership, (req, res) => {
 	Comment.findByIdAndRemove(req.params.comment_id, err => {
-		req.flash("success", "Comment successfully deleted!");
+		req.flash("error", "Comment deleted!");
 		res.redirect("/campgrounds/" + req.params.id);
 	});
 });
