@@ -61,14 +61,14 @@ router.get("/logout", (req, res) => {
 
 router.get("/users/:id", (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
-		if(err || foundUser === null){
+		if(err || !foundUser._id){
 			req.flash("error", "Something wrent wrong...");
-			res.redirect("/");
+			return res.redirect("/campgrounds");
 		}
 		Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds) {
 			if(err) {
 				req.flash("error", "Something went wrong.");
-				return res.redirect("/");
+				return res.redirect("/campgrounds");
 			}
       		res.render("users/show", {user: foundUser, campgrounds: campgrounds});
     	});
@@ -77,7 +77,7 @@ router.get("/users/:id", (req, res) => {
 
 //OUT OF ROUTE
 router.get("*", (req, res) => {
-	res.send("OUT OF ROUTE!");
+	res.render("outofroute");
 });
 
 module.exports = router;
