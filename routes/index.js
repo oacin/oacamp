@@ -70,7 +70,7 @@ router.get("/users/:id", (req, res) => {
 				req.flash("error", "Something went wrong.");
 				return res.redirect("/campgrounds");
 			}
-      		res.render("users/show", {user: foundUser, campgrounds: campgrounds});
+      		res.render("users/show", {user: foundUser, campgrounds: campgrounds, page: "users/show"});
     	});
   });
 });

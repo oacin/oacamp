@@ -35,8 +35,8 @@
 								<a href="/register">Sign Up</a>
 							</li>
 						<% } else { %>
-							<li>
-								<a href="#">Signed In As <%= currentUser.username %></a>
+							<li class="<%= typeof page !== 'undefined' && page === 'users/show' ? 'active' : '' %>">
+								<a href="/users/<%= currentUser.id %>"><%= currentUser.username %></a>
 							</li>
 							<li>
 								<a href="/logout">Logout</a>
