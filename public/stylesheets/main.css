@@ -1,9 +1,24 @@
+.thumbnail {
+	padding: 0;
+}
+
 .thumbnail img {
 	width: 100%;
 }
 
-.thumbnail {
-	padding: 0;
+img.campground-min {
+	width: 100%;
+	height: 150px;
+}
+
+img.campground-show {
+	width: 100%;
+	height: 150px;
+}
+
+img.user-pic {
+	width: 100%;
+	height: 300px;
 }
 
 .thumbnail .caption-full {
