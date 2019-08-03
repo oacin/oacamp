@@ -74,7 +74,7 @@ router.post('/forgot', function(req, res, next) {
         subject: 'YelpCamp Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + 'oacin.herokuapp.com' + '/reset/' + token + '\n\n' +
+          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n\n' +
 		  'Don\'t reply to this email, it\'s generated automatically.\n'
       };
