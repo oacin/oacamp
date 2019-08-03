@@ -79,8 +79,8 @@
                                 <!--Else just display it black-->
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             <% } %>
-                            <!--Print out the author username-->
-                            <%= comment.author.username %>
+                            <!--Print out the author username with a link to profile-->
+                            <a href="/users/<%= comment.author.id %>" style="text-decoration: none;"><%= comment.author.username %></a>
                         </strong>
                         <!--Show when the comment was made-->
                         <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
