@@ -12,35 +12,6 @@ router.get("/", (req, res) => {
 	res.render("landing");
 });
 
-//REGISTER FORM
-router.get("/register", (req, res) => {
-	res.render("register", {page: "register"});
-});
-
-//CREATING USER
-router.post("/register", (req, res) => {
-	var newUser = new User({
-		username: req.body.username,
-		avatar: req.body.avatar,
-		firstName: req.body.firstName,
-		lastName: req.body.lastName,
-		email: req.body.email
-	});
-	if(req.body.adminCode === "bankai"){
-		newUser.isAdmin = true;
-	}
-	User.register(newUser, req.body.password, (err, user) => {
-		if(err){
-			console.log(err);
-			return res.render("register", {error: err.message});
-		}
-		passport.authenticate("local")(req, res, () => {
-			req.flash("success", "Welcome to YelpCamp " + user.username + "!");
-			res.redirect("/campgrounds");
-		});
-	});
-});
-
 //LOGIN FORM
 router.get("/login", (req, res) => {
 	res.render("login", {page: "login"});
@@ -103,7 +74,7 @@ router.post('/forgot', function(req, res, next) {
         subject: 'YelpCamp Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + 'secret-tor-40174.herokuapp.com' + '/reset/' + token + '\n\n' +
+          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n\n' +
 		  'Don\'t reply to this email, it\'s generated automatically.\n'
       };

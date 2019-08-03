@@ -16,7 +16,7 @@
 				<h4 class="pull-right">$ <%= campground.price %>/night</h4>
 				<h4><a><%= campground.name %></a></h4>
 				<p><%= campground.description %></p>
-				<p><em>Submitted by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em></p>
+				<p><em>Submitted by: <a style="text-decoration: none;" href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em></p>
 
 				<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
 					<a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-xs btn-warning">Edit</a>

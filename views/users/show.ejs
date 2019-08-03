@@ -7,6 +7,11 @@
 			<img src="<%= user.avatar %>" alt="user profile image" class="user-pic">
 			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
 		</div>
+		<% if(currentUser && currentUser._id.equals(user._id)){ %>
+			<a href="/users/<%= user._id %>/edit" class="btn btn-xs btn-warning" style="display: block; margin: 10px 0px;">
+				Edit Profile
+			</a>
+		<% } %>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
 
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.

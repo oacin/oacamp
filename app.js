@@ -13,6 +13,7 @@ const express = require("express"),
 
 const commentRoutes = require("./routes/comments"),
 	  campgroundRoutes = require("./routes/campgrounds"),
+	  userRoutes = require("./routes/users"),
 	  indexRoutes = require("./routes/index");
 
 //DB CONNECTION
@@ -62,6 +63,7 @@ app.use((req, res, next) => {
 //USING THE CREATED ROUTES
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use(userRoutes);
 app.use(indexRoutes);
 
 const port = process.env.PORT || 3000;
