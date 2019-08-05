@@ -5,17 +5,17 @@
 	<div style="width: 30%; margin: 25px auto;">
 		<form action="/login" method="POST">
 			<div class="form-group">
-				<input class="form-control" type="text" name="username" placeholder="username">
+				<input class="form-control" type="text" name="username" placeholder="username" required>
 			</div>
 			<div class="form-group">
-				<input class="form-control" type="password" name="password" placeholder="password">
+				<input class="form-control" type="password" name="password" placeholder="password" required>
 			</div>
 			<div class="form-group">
 				<button class="btn btn-lg btn-primary btn-block">Login</button>
 			</div>
 		</form>
-		<a href="/forgot" class="d-block">Forgot my password...</a>
-		<a href="/campgrounds" class="d-block">Go Back</a>
+		<p class="text-center">Don't have an Account? <a href="/register" style="text-decoration: none;">Sign up</a></p>
+		<p class="text-center"><a href="/forgot" style="text-decoration: none;">I forgot my password...</a></p>
 	</div>
 </div>
 

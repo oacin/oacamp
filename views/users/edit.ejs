@@ -3,22 +3,22 @@
 <div class="row">
     <h1 style="text-align: center"><%= user.username %>'s profile</h1>
     <div style="width: 30%; margin: 25px auto;">
-        <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+        <form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="avatar">Avatar URL</label>
-                <input class="form-control" type="text" name="avatar" value="<%= user.avatar %>">
+				<label for="avatar">Avatar Image</label>
+				<input type="file" id="avatar" name="avatar" accept="image/*">
             </div>
 			<div class="form-group">
 				<label for="firstName">First Name</label>
-                <input class="form-control" type="text" name="firstName" value="<%= user.firstName %>">
+                <input class="form-control" type="text" name="user[firstName]" value="<%= user.firstName %>">
             </div>
 			<div class="form-group">
 				<label for="lastName">Last Name</label>
-                <input class="form-control" type="text" name="lastName" value="<%= user.lastName %>">
+                <input class="form-control" type="text" name="user[lastName]" value="<%= user.lastName %>">
             </div>
 			<div class="form-group">
 				<label for="email">Email</label>
-                <input class="form-control" type="email" name="email" value="<%= user.email %>">
+                <input class="form-control" type="email" name="user[email]" value="<%= user.email %>">
             </div>
             <div class="form-group">
                 <button class="btn btn-lg btn-primary btn-block">Edit Profile</button>
