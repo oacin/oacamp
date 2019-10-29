@@ -108,25 +108,32 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, (req, res) => {
 });
 
 router.put("/:id", middleware.checkCampgroundOwnership, upload.single('image'), (req, res) => {
-	cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
-		if(err) {
-			req.flash('error', err.message);
-			return res.redirect('back');
-		}
-		// add cloudinary url for the image to the campground object under image property
-		req.body.campground.image = result.secure_url;
-		// add image's public_id to campground object
-		req.body.campground.imageId = result.public_id;
-		// add author to campground
-		req.body.campground.author = {
-			id: req.user._id,
-			username: req.user.username
-		};
+	if(!req.file) {
 		Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
-			req.flash("success", "Campground successfully changed!");
-			res.redirect("/campgrounds/" + updatedCampground._id);
+				req.flash("success", "Campground successfully changed!");
+				res.redirect("/campgrounds/" + updatedCampground._id);
 		});
-    });
+	} else {
+		cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+			if(err) {
+				req.flash('error', err.message);
+				return res.redirect('back');
+			}
+			// add cloudinary url for the image to the campground object under image property
+			req.body.campground.image = result.secure_url;
+			// add image's public_id to campground object
+			req.body.campground.imageId = result.public_id;
+			// add author to campground
+			req.body.campground.author = {
+				id: req.user._id,
+				username: req.user.username
+			};
+			Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
+				req.flash("success", "Campground successfully changed!");
+				res.redirect("/campgrounds/" + updatedCampground._id);
+			});
+		});
+	}
 });
 
 //DESTROY

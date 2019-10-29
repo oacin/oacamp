@@ -1,64 +1,74 @@
-const mongoose = require("mongoose"), 
-	  Campground = require("./models/campground"), 
-	  Comment   = require("./models/comment");
+var mongoose = require("mongoose");
+var Campground = require("./models/campground");
+var Comment = require("./models/comment");
 
-var data = [
+var data=[
 	{
-		name: "Cloud's Rest", 
-		image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
-		description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+		name:"Desert Mata",
+		image:"https://media-cdn.tripadvisor.com/media/photo-s/06/36/4f/82/the-osian-sand-dunes.jpg",
+		description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+		price: "777.77",
+		author:{
+			id : "588c2e092403d111454fff76",
+			username: "Seed BOT"
+		}
 	},
 	{
-		name: "Desert Mesa", 
-		image: "https://farm6.staticflickr.com/5487/11519019346_f66401b6c1.jpg",
-		description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+		name:"Hill Campground",
+		image:"http://www.nationalparks.nsw.gov.au/~/media/DF58734103EF43669F1005AF8B668209.ashx",
+		description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+		price: "777.77",
+		author:{
+			id : "588c2e092403d111454fff76",
+			username: "Seed BOT"
+		}
 	},
 	{
-		name: "Canyon Floor", 
-		image: "https://farm1.staticflickr.com/189/493046463_841a18169e.jpg",
-		description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+		name:"Campground near river",
+		image:"http://www.eaglemountainlake.org/wp-content/uploads/2013/12/Camping.jpg",
+		description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+		price: "777.77",
+		author:{
+			id : "588c2e092403d111454fff76",
+			username: "Seed BOT"
+		}
 	}
 ];
 
 function seedDB(){
-   //Remove all campgrounds
-   Campground.remove({}, function(err){
+	Campground.deleteMany({},function(err){
 		if(err){
 			console.log(err);
+		}else{
+			console.log("removed from DB");
 		}
-		console.log("removed campgrounds!");
-		Comment.remove({}, function(err) {
-			if(err){
-				console.log(err);
-			}
-			console.log("removed comments!");
-			 //Add a few campgrounds
-			data.forEach(function(seed){
-				Campground.create(seed, function(err, campground){
-					if(err){
-						console.log(err);
-					} else {
-						console.log("added a campground");
-						//Create a comment
-						Comment.create(
+		data.forEach(function(seed){
+			Campground.create(seed,function(err,campground){
+				if(err){
+					console.log(err);
+				}else{
+					console.log("added a campgrounds");
+					Comment.create(
 							{
-								text: "This place is great, but I wish there was internet",
-								author: "Homer"
-							}, function(err, comment){
+								text:"This place is great and there is no internet",
+								author:{
+									id: "588c2e092403d111454fff76",
+									username: "Seed BOT"
+								}
+							},function(err,comment){
 								if(err){
 									console.log(err);
-								} else {
-									//Add a few comments
+								}else{
 									campground.comments.push(comment);
 									campground.save();
 									console.log("Created new comment");
 								}
 							});
-					}
-				});
+				}
 			});
 		});
-	}); 
-}
+	});
+	//add a vew campgrounds
+};
 
 module.exports = seedDB;
