@@ -1,17 +1,17 @@
 <% include ../partials/header %>
 
 <div class="row">
-	<h2 class="text-center">Edit Comment</h2>
+	<h2 class="text-center">Editar comentário</h2>
 	<div style="width: 30%; margin: 30px auto">
 		<form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
 			<div class="form-group">
 				<textarea class="form-control" name="comment[text]"><%= comment.text %></textarea>
 			</div>
 			<div class="form-group">
-				<button class="btn btn-large btn-primary btn-block">Edit Comment</button>
+				<button class="btn btn-large btn-primary btn-block">Editar comentário</button>
 			</div>
 		</form>
-		<a href="/campgrounds">Go Back</a>
+		<a href="/campgrounds">Voltar</a>
 	</div>
 </div>
 

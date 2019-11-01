@@ -5,15 +5,15 @@
     <div style="width: 30%; margin: 25px auto;">
         <form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="avatar">Avatar Image</label>
+				<label for="avatar">Avatar</label>
 				<input type="file" id="avatar" name="avatar" accept="image/*">
             </div>
 			<div class="form-group">
-				<label for="firstName">First Name</label>
+				<label for="firstName">Primeiro Nome</label>
                 <input class="form-control" type="text" name="user[firstName]" value="<%= user.firstName %>">
             </div>
 			<div class="form-group">
-				<label for="lastName">Last Name</label>
+				<label for="lastName">Último nome</label>
                 <input class="form-control" type="text" name="user[lastName]" value="<%= user.lastName %>">
             </div>
 			<div class="form-group">
@@ -21,10 +21,10 @@
                 <input class="form-control" type="email" name="user[email]" value="<%= user.email %>">
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Edit Profile</button>
+                <button class="btn btn-lg btn-primary btn-block">Editar Perfil</button>
             </div>
         </form>
-        <a href="/users/<%= user._id %>">Go Back</a>
+        <a href="/users/<%= user._id %>">Voltar</a>
     </div>
 </div>
 

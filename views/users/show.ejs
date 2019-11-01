@@ -9,7 +9,7 @@
 		</div>
 		<% if(currentUser && currentUser._id.equals(user._id)){ %>
 			<a href="/users/<%= user._id %>/edit" class="btn btn-xs btn-warning" style="display: block; margin: 10px 0px;">
-				Edit Profile
+				Editar Perfil
 			</a>
 		<% } %>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
@@ -17,7 +17,7 @@
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
 	</div>
 	<div class="col-md-8">
-		<h3><%= user.username %>'s campgrounds:</h3>
+		<h3>Acampamentos de <%= user.username %>:</h3>
 		<ul>
 			<% campgrounds.forEach(function(campground) { %>
 				<li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></li>

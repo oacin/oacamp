@@ -2,14 +2,14 @@
 
 <header class="jumbotron">
 	<div class="container">
-		<h1>Welcome to YelpCamp</h1>
-		<p>See bellow some of our campsites!</p>
-		<p><a class="btn btn-large btn-warning" href="/campgrounds/new">Add a new Campground for us!</a></p>
+		<h1>Bem vindo ao OACamp!</h1>
+		<p>Veja abaixo nossos acampamentos!</p>
+		<p><a class="btn btn-large btn-warning" href="/campgrounds/new">Adicionar novo acampamento</a></p>
 		<p>
 			<form action="/campgrounds" method="GET" class="form-inline">
 				<div class="form-group">
-					<input type="text" name="search" class="form-control" placeholder="Campground search...">
-					<input type="submit" class="btn btn-primary" value="Search">
+					<input type="text" name="search" class="form-control" placeholder="Buscar acampamento...">
+					<input type="submit" class="btn btn-primary" value="Buscar">
 				</div>
 			</form>
 		</p>
@@ -28,7 +28,7 @@
 				<div class="caption text-center">
 					<h4><%= campground.name %></h4>
 					<p>
-						<a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">More Info</a>
+						<a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">Mais informações</a>
 					</p>
 				</div>
 			</div>
